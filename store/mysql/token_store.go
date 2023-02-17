@@ -157,8 +157,6 @@ func (s *TokenStore) Create(info oauth2.TokenInfo) error {
 		}
 	}
 
-	fmt.Print(item.CreatedAt)
-
 	_, err := s.db.Exec(
 		fmt.Sprintf("INSERT INTO %s (created_at, expired_at, code, access, refresh, data) VALUES (?,?,?,?,?,?)", s.tableName),
 		item.CreatedAt,
