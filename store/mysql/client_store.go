@@ -7,8 +7,8 @@ import (
 
 	"github.com/jmoiron/sqlx"
 	jsoniter "github.com/json-iterator/go"
+	"github.com/o98k-ok/oauth2"
 	"github.com/o98k-ok/oauth2/models"
-	"gopkg.in/oauth2.v3"
 )
 
 type ClientStore struct {

@@ -16,10 +16,7 @@ require (
 	github.com/tidwall/buntdb v1.0.0
 	github.com/vgarvardt/go-pg-adapter v0.3.0
 	golang.org/x/oauth2 v0.5.0
-	gopkg.in/oauth2.v3 v3.10.0
 )
-
-require github.com/imrenagi/go-oauth2-mysql v1.1.0
 
 require (
 	github.com/ajg/form v0.0.0-20160822230020-523a5da1a92f // indirect
@@ -33,7 +30,11 @@ require (
 	github.com/jtolds/gls v4.2.1+incompatible // indirect
 	github.com/klauspost/compress v1.4.0 // indirect
 	github.com/klauspost/cpuid v0.0.0-20180405133222-e7e905edc00e // indirect
+	github.com/mattn/go-colorable v0.0.9 // indirect
+	github.com/mattn/go-isatty v0.0.4 // indirect
 	github.com/moul/http2curl v1.0.0 // indirect
+	github.com/onsi/ginkgo v1.7.0 // indirect
+	github.com/onsi/gomega v1.4.3 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/sergi/go-diff v1.0.0 // indirect
 	github.com/smartystreets/assertions v0.0.0-20180927180507-b2de0cb4f26d // indirect
@@ -51,6 +52,7 @@ require (
 	github.com/yalp/jsonpath v0.0.0-20180802001716-5cc68e5049a0 // indirect
 	github.com/yudai/gojsondiff v1.0.0 // indirect
 	github.com/yudai/golcs v0.0.0-20170316035057-ecda9a501e82 // indirect
+	github.com/yudai/pp v2.0.1+incompatible // indirect
 	golang.org/x/net v0.6.0 // indirect
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
