@@ -29,6 +29,10 @@ func (s *Server) SetClientInfoHandler(handler ClientInfoHandler) {
 	s.ClientInfoHandler = handler
 }
 
+func (s *Server) SetResponseTokenHandler(handler ResponseTokenHandler) {
+	s.ResponseTokenHandler = handler
+}
+
 // SetClientAuthorizedHandler check the client allows to use this authorization grant type
 func (s *Server) SetClientAuthorizedHandler(handler ClientAuthorizedHandler) {
 	s.ClientAuthorizedHandler = handler
