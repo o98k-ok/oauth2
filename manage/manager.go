@@ -3,10 +3,10 @@ package manage
 import (
 	"time"
 
-	"gopkg.in/oauth2.v3"
-	"gopkg.in/oauth2.v3/errors"
-	"gopkg.in/oauth2.v3/generates"
-	"gopkg.in/oauth2.v3/models"
+	"github.com/o98k-ok/oauth2"
+	"github.com/o98k-ok/oauth2/errors"
+	"github.com/o98k-ok/oauth2/generates"
+	"github.com/o98k-ok/oauth2/models"
 )
 
 // NewDefaultManager create to default authorization management instance
@@ -265,10 +265,12 @@ func (m *Manager) GenerateAccessToken(gt oauth2.GrantType, tgr *oauth2.TokenGene
 	cli, err := m.GetClient(tgr.ClientID)
 	if err != nil {
 		return
-	} else if tgr.ClientSecret != cli.GetSecret() {
+	} else if len(cli.GetSecret()) > 0 && len(tgr.ClientSecret) > 0 && tgr.ClientSecret != cli.GetSecret() {
 		err = errors.ErrInvalidClient
 		return
-	} else if tgr.RedirectURI != "" {
+	}
+
+	if tgr.RedirectURI != "" {
 		if verr := m.validateURI(cli.GetDomain(), tgr.RedirectURI); verr != nil {
 			err = verr
 			return
@@ -339,19 +341,21 @@ func (m *Manager) GenerateAccessToken(gt oauth2.GrantType, tgr *oauth2.TokenGene
 
 // RefreshAccessToken refreshing an access token
 func (m *Manager) RefreshAccessToken(tgr *oauth2.TokenGenerateRequest) (accessToken oauth2.TokenInfo, err error) {
-	cli, err := m.GetClient(tgr.ClientID)
-	if err != nil {
-		return
-	} else if tgr.ClientSecret != cli.GetSecret() {
-		err = errors.ErrInvalidClient
-		return
-	}
+	//cli, err := m.GetClient(tgr.ClientID)
+	// if err != nil {
+	// 	return
+	// } else if tgr.ClientSecret != cli.GetSecret() {
+	// 	err = errors.ErrInvalidClient
+	// 	return
+	// }
 
 	ti, err := m.LoadRefreshToken(tgr.Refresh)
 	if err != nil {
 		return
-	} else if ti.GetClientID() != tgr.ClientID {
-		err = errors.ErrInvalidRefreshToken
+	}
+
+	cli, err := m.GetClient(ti.GetClientID())
+	if err != nil {
 		return
 	}
 
